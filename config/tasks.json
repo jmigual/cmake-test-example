@@ -1,0 +1,28 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // Copy these tasks into your vscode tasks.json file
+        {
+            "label": "Compile commands (Windows)",
+            "type": "shell",
+            "command": "jq 'map(select(.file | contains(\\\"build\\\") | not))' compile_commands.json > ${workspaceFolder}/compile_commands.json",
+            "args": [],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${command:cmake.buildDirectory}"
+            }
+        },
+        {
+            "label": "Compile commands (Linux)",
+            "type": "shell",
+            "command": "jq 'map(select(.file | contains(\"build\") | not))' compile_commands.json > ${workspaceFolder}/compile_commands.json",
+            "args": [],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${command:cmake.buildDirectory}"
+            }
+        }
+    ]
+}

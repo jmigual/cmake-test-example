@@ -1,0 +1,147 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default",
+            "description": "Default config, uses system default compiler",
+            "binaryDir": "${sourceDir}/build/default",
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true
+            }
+        },
+        {
+            "name": "MSVC",
+            "displayName": "MSVC",
+            "description": "Use the Visual Studio compiler",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/msvc",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_C_COMPILER": "cl"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "toolset": {
+                "value": "host=x64",
+                "strategy": "external"
+            }
+        },
+        {
+            "name": "clang",
+            "displayName": "Clang",
+            "description": "Use the clang compiler",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/clang",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_C_COMPILER": "clang"
+            }
+        },
+        {
+            "name": "GCC",
+            "displayName": "GCC",
+            "description": "Use the GCC compiler",
+            "inherits": "default",
+            "binaryDir": "${sourceDir}/build/gcc",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "g++-11",
+                "CMAKE_C_COMPILER": "gcc-11"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "default",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "default",
+            "configuration": "Release"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "default",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "MSVC-debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "MSVC",
+            "configuration": "Debug"
+        },
+        {
+            "name": "MSVC-release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "MSVC",
+            "configuration": "Release"
+        },
+        {
+            "name": "MSVC-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "MSVC",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "clang",
+            "configuration": "Debug"
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "clang",
+            "configuration": "Release"
+        },
+        {
+            "name": "clang-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "clang",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "GCC-debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "GCC",
+            "configuration": "Debug"
+        },
+        {
+            "name": "GCC-release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "GCC",
+            "configuration": "Release"
+        },
+        {
+            "name": "GCC-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "GCC",
+            "configuration": "RelWithDebInfo"
+        }
+    ]
+}

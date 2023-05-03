@@ -1,0 +1,23 @@
+# We'll use defaults from the LLVM style, but with 4 columns indentation.
+BasedOnStyle: LLVM
+IndentWidth: 4
+ContinuationIndentWidth: 8
+
+ColumnLimit: 100
+Language: Cpp
+PointerAlignment: Right
+
+# We have to do this trick to avoid indenting the access modifier
+# newer versions of clang-format have the 'IndentAccessModifiers' key but it is not supported on some IDEs yet
+AccessModifierOffset: -4
+#IndentAccessModifieres: false
+
+NamespaceIndentation: None
+BreakConstructorInitializers: AfterColon
+BreakBeforeBinaryOperators: NonAssignment
+BinPackArguments: false
+BinPackParameters: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+ReflowComments: true
+IncludeBlocks: Preserve
