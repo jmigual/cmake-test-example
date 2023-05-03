@@ -10,7 +10,7 @@
             "name": "default",
             "displayName": "Default",
             "description": "Default config, uses system default compiler",
-            "binaryDir": "${sourceDir}/build/default",
+            "binaryDir": "${sourceDir}/build/${presetName}",
             "generator": "Ninja Multi-Config",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true
@@ -21,7 +21,6 @@
             "displayName": "MSVC",
             "description": "Use the Visual Studio compiler",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/msvc",
             "cacheVariables": {
                 "CMAKE_CXX_COMPILER": "cl",
                 "CMAKE_C_COMPILER": "cl"
@@ -40,7 +39,6 @@
             "displayName": "Clang",
             "description": "Use the clang compiler",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/clang",
             "cacheVariables": {
                 "CMAKE_CXX_COMPILER": "clang++",
                 "CMAKE_C_COMPILER": "clang"
@@ -51,10 +49,19 @@
             "displayName": "GCC",
             "description": "Use the GCC compiler",
             "inherits": "default",
-            "binaryDir": "${sourceDir}/build/gcc",
             "cacheVariables": {
                 "CMAKE_CXX_COMPILER": "g++-11",
                 "CMAKE_C_COMPILER": "gcc-11"
+            }
+        },
+        {
+            "name": "custom-MSVC",
+            "displayName": "Custom MSVC",
+            "description": "Use a custom Visual Studio compiler",
+            "inherits": ["default", "MSVC"],
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
             }
         }
     ],
@@ -142,6 +149,12 @@
             "description": "Optimized build with debug information",
             "configurePreset": "GCC",
             "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "custom-MSVC-debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "custom-MSVC"
         }
     ]
 }
